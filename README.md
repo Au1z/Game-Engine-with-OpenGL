@@ -1,3 +1,2 @@
 # Game Engine with OpenGL
-[![Watch the video]()](https://drive.google.com/file/d/1ub1BQ8QfOcDArUeDHVRV9NOGzC9pbGxI/view?usp=drive_link)
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+<video src="[path/to/video.mp4](https://drive.google.com/file/d/1ub1BQ8QfOcDArUeDHVRV9NOGzC9pbGxI/view?usp=drive_link)" width="320" height="240" controls></video>
