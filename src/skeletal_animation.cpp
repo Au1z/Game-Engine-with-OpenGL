@@ -36,10 +36,10 @@ float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
 glm::vec3 modelPosition(0.0f, 0.0f, 0.0f);
-float modelYaw = 0.0f; // หมุนโมเดลเอง (เวลาหัน)
-float orbitYaw = 0.0f;   // มุมกล้องรอบโมเดล (แนวนอน)
-float orbitPitch = 20.0f; // มุมกล้องขึ้น/ลง
-float cameraDistance = 4.0f; // ระยะกล้องจากโมเดล
+float modelYaw = 0.0f;
+float orbitYaw = 0.0f;
+float orbitPitch = 20.0f;
+float cameraDistance = 4.0f;
 
 bool isWalking = false;
 
@@ -203,10 +203,8 @@ int main()
 		cameraOffset.y = cameraDistance * sin(pitchRad);
 		cameraOffset.z = -cameraDistance * cos(pitchRad) * cos(yawRad);
 
-		// ตำแหน่งกล้อง
 		camera.Position = modelPosition + cameraOffset;
 
-		// กล้องหันไปที่โมเดลเสมอ
 		camera.Front = glm::normalize(modelPosition - camera.Position);
 
 		// view/projection transformations
@@ -219,7 +217,7 @@ int main()
 		for (int i = 0; i < transforms.size(); ++i)
 			ourShader.setMat4("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
 
-		modelYaw = -orbitYaw; // ทำให้โมเดลหันหน้าหากล้อง
+		modelYaw = -orbitYaw;
 
 		// render the loaded model
 		glm::mat4 model = glm::mat4(1.0f);
@@ -311,7 +309,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	}
 
 	float xoffset = xpos - lastX;
-	float yoffset = lastY - ypos; // ย้อนเพราะแกน Y ของจอคอมกลับด้าน
+	float yoffset = lastY - ypos;
 	lastX = xpos;
 	lastY = ypos;
 
@@ -322,7 +320,6 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	orbitYaw += xoffset;
 	orbitPitch += yoffset;
 
-	// จำกัดมุมกล้องไม่ให้หมุนเกินหัว/ล่างสุด
 	if (orbitPitch > 89.0f)
 		orbitPitch = 89.0f;
 	if (orbitPitch < 5.0f)
